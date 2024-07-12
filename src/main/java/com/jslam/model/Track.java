@@ -1,4 +1,4 @@
-package model;
+package com.jslam.model;
 
 import java.util.List;
 

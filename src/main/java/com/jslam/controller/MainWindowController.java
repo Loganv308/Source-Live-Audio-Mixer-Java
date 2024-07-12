@@ -1,6 +1,6 @@
-package controller;
+package com.jslam.controller;
 
-import view.ViewFactory;
+import com.jslam.view.ViewFactory;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

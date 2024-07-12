@@ -45,14 +45,14 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button layoutX="536.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Settings" />
+            <Button fx:id="settingsButton" layoutX="536.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Settings" />
             <Button fx:id="importButton" layoutX="15.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Import" />
-            <Button layoutX="111.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" />
+            <Button fx:id="ytLinkButton" layoutX="111.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" />
             <Label layoutX="150.0" layoutY="319.0" prefHeight="17.0" prefWidth="40.0" text="Status:" />
-            <Label fx:id="statusLabel" layoutX="190.0" layoutY="319.0" text="Label" />
+            <Label fx:id="statusLabel" layoutX="190.0" layoutY="319.0" />
             <ProgressBar layoutX="15.0" layoutY="355.0" prefHeight="25.0" prefWidth="611.0" progress="0.0" />
-            <Button layoutX="508.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Play Key: (Change)" />
-            <TableView layoutX="15.0" layoutY="42.0" prefHeight="259.0" prefWidth="611.0">
+            <Button fx:id="playKeyButton" layoutX="508.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Play Key: (Change)" />
+            <TableView fx:id="trackTable" layoutX="15.0" layoutY="42.0" prefHeight="259.0" prefWidth="611.0">
               <columns>
                 <TableColumn prefWidth="79.0" text="Loaded" />
                 <TableColumn prefWidth="180.0" text="Track" />

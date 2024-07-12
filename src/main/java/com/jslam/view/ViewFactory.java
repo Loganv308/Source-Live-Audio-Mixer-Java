@@ -1,9 +1,9 @@
-package view;
+package com.jslam.view;
 
 import java.io.IOException;
 
-import controller.BaseController;
-import controller.MainWindowController;
+import com.jslam.controller.BaseController;
+import com.jslam.controller.MainWindowController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

@@ -1,9 +1,9 @@
-package model;
+package com.jslam.model;
 
 import java.util.Arrays;
 import java.util.List;
 
-import model.Track;
+import com.jslam.model.Track;
 
 public class SourceGame {
     public String name;

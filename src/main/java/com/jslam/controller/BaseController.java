@@ -1,6 +1,6 @@
-package controller;
+package com.jslam.controller;
 
-import view.ViewFactory;
+import com.jslam.view.ViewFactory;
 /*
  * This abstract class is used as a base controller for all other controllers.
  * These controllers are generated from Scenebuilder code, then added onto as needed for logic code
