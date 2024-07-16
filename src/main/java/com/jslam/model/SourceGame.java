@@ -21,7 +21,7 @@ public class SourceGame {
 
     public List<String> blacklist = Arrays.asList("slam", "slam_listtracks", "list", "tracks", "la", "slam_play", "slam_play_on", "slam_play_off", "slam_updatecfg", "slam_curtrack", "slam_saycurtrack", "slam_sayteamcurtrack");
 
-    // Constructor 
+    // Constructor for the SourceGame class
     public SourceGame(String name, int id, String directory, String toCfg, String libraryName, boolean voiceFadeOut, String exeName, List<String> fileExtensions, int sampleRate, int bits, int channels, int pollInterval, List<String> blackList) {
         this.name = name;
         this.id = id;
@@ -45,6 +45,7 @@ public class SourceGame {
         public int startPos;
         public int endPos;
 
+        // Constructor for the track class 
         public Track(String name, List<String> tags, String hotKey, int volume, int startPos, int endPos) {
             this.name = name;
             this.tags = tags;
