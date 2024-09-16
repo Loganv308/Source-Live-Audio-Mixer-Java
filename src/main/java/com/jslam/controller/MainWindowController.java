@@ -1,5 +1,7 @@
 package com.jslam.controller;
 
+import com.jslam.model.SourceGame;
+import com.jslam.model.SourceGame.Track;
 import com.jslam.view.ViewFactory;
 
 import javafx.fxml.FXML;
@@ -11,7 +13,7 @@ import javafx.scene.control.TableView;
 public class MainWindowController extends BaseController {
 
     @FXML
-    private ComboBox<?> gameComboBox;
+    private ComboBox<SourceGame> gameComboBox;
 
     @FXML
     private Button importButton;
@@ -26,7 +28,7 @@ public class MainWindowController extends BaseController {
     private Label statusLabel;
 
     @FXML
-    private TableView<?> trackTable;
+    private TableView<Track> trackTable;
 
     @FXML
     private Button ytLinkButton;

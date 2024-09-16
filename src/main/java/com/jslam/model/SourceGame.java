@@ -37,6 +37,7 @@ public class SourceGame {
         this.pollInterval = pollInterval;
         this.blacklist = blackList;
     }
+
     public class Track {
         public String name;
         public List<String> tags;
@@ -44,7 +45,7 @@ public class SourceGame {
         public int volume = 100;
         public int startPos;
         public int endPos;
-
+    
         // Constructor for the track class 
         public Track(String name, List<String> tags, String hotKey, int volume, int startPos, int endPos) {
             this.name = name;
@@ -55,6 +56,4 @@ public class SourceGame {
             this.endPos = endPos;
         }
     }
-    
-    
 }   
