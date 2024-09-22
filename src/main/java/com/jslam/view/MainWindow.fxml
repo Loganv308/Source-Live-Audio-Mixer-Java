@@ -45,14 +45,14 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" minHeight="400.0" minWidth="400.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="settingsButton" layoutX="536.0" layoutY="11.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Settings" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0" />
-            <Button fx:id="importButton" layoutX="15.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Import" />
-            <Button fx:id="ytLinkButton" layoutX="111.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" />
+            <Button layoutX="536.0" layoutY="11.0" mnemonicParsing="false" onAction="#settingsButtonAction" prefHeight="25.0" prefWidth="90.0" text="Settings" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="11.0" />
+            <Button layoutX="15.0" layoutY="315.0" mnemonicParsing="false" onAction="#importButtonAction" prefHeight="25.0" prefWidth="90.0" text="Import" />
+            <Button layoutX="111.0" layoutY="315.0" mnemonicParsing="false" onAction="#ytLinkButtonAction" prefHeight="25.0" prefWidth="33.0" />
             <Label layoutX="150.0" layoutY="319.0" prefHeight="17.0" prefWidth="40.0" text="Status:" />
             <Label fx:id="statusLabel" layoutX="190.0" layoutY="319.0" />
-            <ProgressBar layoutX="15.0" layoutY="355.0" prefHeight="25.0" prefWidth="611.0" progress="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="355.0" />
-            <Button fx:id="playKeyButton" layoutX="508.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Play Key: (Change)" AnchorPane.rightAnchor="14.0" />
-            <TableView fx:id="trackTable" layoutX="15.0" layoutY="42.0" prefHeight="259.0" prefWidth="611.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0">
+            <ProgressBar fx:id="progressBar" layoutX="15.0" layoutY="355.0" onDragDetected="#progressBarAction" prefHeight="25.0" prefWidth="611.0" progress="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="355.0" />
+            <Button layoutX="508.0" layoutY="315.0" mnemonicParsing="false" onAction="#playKeyButtonAction" prefHeight="25.0" prefWidth="118.0" text="Play Key: (Change)" AnchorPane.rightAnchor="14.0" />
+            <TableView fx:id="trackTable" layoutX="15.0" layoutY="42.0" onSort="#trackTableAction" prefHeight="259.0" prefWidth="611.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0">
               <columns>
                 <TableColumn prefWidth="79.0" text="Loaded" />
                 <TableColumn prefWidth="180.0" text="Track" />
@@ -62,7 +62,7 @@
                   <TableColumn prefWidth="81.0" resizable="false" text="Tags" />
               </columns>
             </TableView>
-            <ComboBox fx:id="gameComboBox" layoutX="60.0" layoutY="11.0" prefHeight="25.0" prefWidth="471.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="109.0" AnchorPane.topAnchor="11.0" />
+            <ComboBox layoutX="60.0" layoutY="11.0" onAction="#gameComboBoxAction" prefHeight="25.0" prefWidth="471.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="109.0" AnchorPane.topAnchor="11.0" />
             <Label layoutX="15.0" layoutY="15.0" prefHeight="17.0" prefWidth="40.0" text="Game:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
          </children>
     </AnchorPane>
