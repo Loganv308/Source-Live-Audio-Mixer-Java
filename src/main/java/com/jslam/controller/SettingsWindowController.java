@@ -1,9 +1,14 @@
 package com.jslam.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.time.LocalDate;
 import javax.swing.JFileChooser;
 
 import com.jslam.view.ViewFactory;
@@ -19,8 +24,21 @@ import javafx.scene.control.TextField;
 
 public class SettingsWindowController extends BaseController implements Initializable{
     
+    // Initialized variables
+    private final static Logger LOG = Logger.getLogger(SettingsWindowController.class.getName());
+    private static FileHandler fh;
+    private static SimpleFormatter formatter = new SimpleFormatter();
+
+    // Constructor
     public SettingsWindowController(ViewFactory viewFactory, String fxmlName) {
         super(viewFactory, fxmlName);
+        try {
+             fh = new FileHandler("src/main/java/com/jslam/logs/log.xml", true);
+             LOG.addHandler(fh);
+             fh.setFormatter(formatter);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -57,7 +75,9 @@ public class SettingsWindowController extends BaseController implements Initiali
 
     @FXML
     void logErrorAction(ActionEvent event) {
-
+        if(logErrorBox.isSelected()) {
+            LOG.log(Level.FINE, "Logger Started at: ", LocalDate.now());
+        }
     }
 
     @FXML
