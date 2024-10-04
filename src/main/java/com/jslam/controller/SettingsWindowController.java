@@ -8,7 +8,9 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.JFileChooser;
 
 import com.jslam.view.ViewFactory;
@@ -25,19 +27,26 @@ import javafx.scene.control.TextField;
 public class SettingsWindowController extends BaseController implements Initializable{
     
     // Initialized variables
-    private final static Logger LOG = Logger.getLogger(SettingsWindowController.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(SettingsWindowController.class.getName());
     private static FileHandler fh;
-    private static SimpleFormatter formatter = new SimpleFormatter();
-
+    
     // Constructor
     public SettingsWindowController(ViewFactory viewFactory, String fxmlName) {
         super(viewFactory, fxmlName);
         try {
-             fh = new FileHandler("src/main/java/com/jslam/logs/log.xml", true);
-             LOG.addHandler(fh);
-             fh.setFormatter(formatter);
+            fh = new FileHandler("src/main/java/com/jslam/logs/logs.log", true);
+            LOGGER.addHandler(fh);
+            fh.setFormatter(new SimpleFormatter());
+            LOGGER.setLevel(Level.ALL);
+            fh.setLevel(Level.ALL);
         } catch(IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public void closeLogger() {
+        if (fh != null) {
+            fh.close(); // Ensure you close the FileHandler
         }
     }
 
@@ -75,8 +84,12 @@ public class SettingsWindowController extends BaseController implements Initiali
 
     @FXML
     void logErrorAction(ActionEvent event) {
-        if(logErrorBox.isSelected()) {
-            LOG.log(Level.FINE, "Logger Started at: ", LocalDate.now());
+        boolean isSelected = logErrorBox.isSelected();
+        if(isSelected) {
+            logMessage("Logger Started", Level.FINE);
+        }
+        else {
+            logMessage("Logger ended", Level.FINE);
         }
     }
 
@@ -98,16 +111,21 @@ public class SettingsWindowController extends BaseController implements Initiali
     @FXML
     void steamAppsButtonAction(ActionEvent event) {
         if(folderDetectionBox.isSelected()) {
+            logMessage("FolderDetectionBox is checked" ,Level.FINE);
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            logMessage("FileChooser set to Directories only mode", Level.FINE);
             int option = jFileChooser.showOpenDialog(jFileChooser);
             if(option == JFileChooser.APPROVE_OPTION) {
+                logMessage("FileChooser menu opened" ,Level.FINE);
                 File file = jFileChooser.getSelectedFile();
                 steamAppsTextField.setText(file.getAbsolutePath());
+                logMessage("steamAppsTextField set to " + file.getAbsolutePath() ,Level.FINE);
             }
         }
         else {
             Alert a = new Alert(AlertType.NONE);
+            logMessage("FolderOverride not enabled", Level.WARNING);
             a.setAlertType(AlertType.INFORMATION);
             a.setTitle("JSLAM Information");
             a.setHeaderText("Enable Override Folder Detection");
@@ -125,16 +143,21 @@ public class SettingsWindowController extends BaseController implements Initiali
     @FXML
     void userDataButtonAction(ActionEvent event) {
         if(folderDetectionBox.isSelected()) {
+            logMessage("FolderDetectionBox is checked" ,Level.FINE);
             JFileChooser jFileChooser = new JFileChooser();
             jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            logMessage("FileChooser set to Directories only mode", Level.FINE);
             int option = jFileChooser.showOpenDialog(jFileChooser);
             if(option == JFileChooser.APPROVE_OPTION) {
+                logMessage("FileChooser menu opened" ,Level.FINE);
                 File file = jFileChooser.getSelectedFile();
                 userDataTextFieldBox.setText(file.getAbsolutePath());
+                logMessage("userDataTextFieldBox set to " + file.getAbsolutePath() ,Level.FINE);
             }
         }
         else {
             Alert a = new Alert(AlertType.NONE);
+            logMessage("FolderOverride not enabled", Level.WARNING);
             a.setAlertType(AlertType.INFORMATION);
             a.setTitle("JSLAM Information");
             a.setHeaderText("Enable Override Folder Detection");
@@ -142,8 +165,14 @@ public class SettingsWindowController extends BaseController implements Initiali
             a.show();
         }
     }
-            
 
+    // Custom function to log only if the Log Error box is checked.
+    void logMessage(String message, Level level) {
+        if (logErrorBox.isSelected()) {  // Log only if the box is checked
+            LOGGER.log(level, message);
+        }
+    }
+            
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         
