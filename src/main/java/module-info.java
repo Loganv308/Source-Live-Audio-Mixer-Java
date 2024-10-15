@@ -4,6 +4,7 @@ module com.jslam {
     requires javafx.graphics;
     requires java.desktop;
     requires java.logging;
+    requires java.xml.bind;
 
     opens com.jslam.controller;
     opens com.jslam.view;

@@ -44,6 +44,7 @@ public class SettingsWindowController extends BaseController implements Initiali
         }
     }
     
+    // Function to close the logger once done logging to file
     public void closeLogger() {
         if (fh != null) {
             fh.close(); // Ensure you close the FileHandler
@@ -175,7 +176,11 @@ public class SettingsWindowController extends BaseController implements Initiali
             
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
+        logErrorBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Observable: " + observable);
+            System.out.println("oldValue: " + oldValue);
+            System.out.println("newValue: " + newValue);
+        });
     }
     
 }

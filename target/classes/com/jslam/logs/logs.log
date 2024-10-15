@@ -76,3 +76,9 @@ Oct 03, 2024 7:53:45 PM com.jslam.controller.SettingsWindowController logMessage
 FINE: FileChooser menu opened
 Oct 03, 2024 7:53:45 PM com.jslam.controller.SettingsWindowController logMessage
 FINE: userDataTextFieldBox set to C:\Users\burni\Documents\Teardown
+Oct 13, 2024 5:23:34 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 13, 2024 5:23:37 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 13, 2024 5:25:18 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
