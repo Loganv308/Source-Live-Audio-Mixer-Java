@@ -82,3 +82,71 @@ Oct 13, 2024 5:23:37 PM com.jslam.controller.SettingsWindowController logMessage
 FINE: Logger Started
 Oct 13, 2024 5:25:18 PM com.jslam.controller.SettingsWindowController logMessage
 FINE: Logger Started
+Oct 14, 2024 5:23:07 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:37:33 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:37:36 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:37:37 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:46:10 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:46:19 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:49:13 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:49:47 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:49:53 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:50:10 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:50:18 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:50:23 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 5:50:25 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 6:27:27 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 6:27:43 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 6:27:44 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 7:13:19 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 7:13:22 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 7:18:50 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 7:30:44 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set logMessage to: true
+Oct 14, 2024 7:30:44 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved logMessage to: src\main\java\com\jslam\controller\config\config.xml
+Oct 14, 2024 7:30:44 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Logger Started
+Oct 14, 2024 7:30:46 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set startEnabled to: true
+Oct 14, 2024 7:30:46 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved startEnabled to: src\main\java\com\jslam\controller\config\config.xml
+Oct 14, 2024 7:30:50 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set startEnabled to: false
+Oct 14, 2024 7:30:50 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved startEnabled to: src\main\java\com\jslam\controller\config\config.xml
+Oct 14, 2024 7:30:55 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set setMinSystemTray to: true
+Oct 14, 2024 7:30:55 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved setMinSystemTray to: src\main\java\com\jslam\controller\config\config.xml
+Oct 14, 2024 7:31:01 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set setStartMini to: true
+Oct 14, 2024 7:31:01 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved setStartMini to: src\main\java\com\jslam\controller\config\config.xml
+Oct 14, 2024 7:31:01 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set startEnabled to: true
+Oct 14, 2024 7:31:01 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved startEnabled to: src\main\java\com\jslam\controller\config\config.xml
+Oct 14, 2024 7:31:07 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Set setStartMini to: false
+Oct 14, 2024 7:31:07 PM com.jslam.controller.SettingsWindowController logMessage
+FINE: Saved setStartMini to: src\main\java\com\jslam\controller\config\config.xml

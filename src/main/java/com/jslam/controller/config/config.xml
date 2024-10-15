@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config>
+    <logErrors>true</logErrors>
+    <minSystemTray>true</minSystemTray>
+    <path>src\main\java\com\jslam\controller\config\config.xml</path>
+    <startEnabled>true</startEnabled>
+    <startMini>false</startMini>
+</config>
