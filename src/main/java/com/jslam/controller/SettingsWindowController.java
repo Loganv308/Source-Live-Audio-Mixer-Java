@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.swing.JFileChooser;
 
+import com.jslam.controller.config.Config;
 import com.jslam.view.ViewFactory;
 
 import javafx.event.ActionEvent;
@@ -26,8 +27,9 @@ import javafx.scene.control.TextField;
 
 public class SettingsWindowController extends BaseController implements Initializable{
     
-    // Initialized variables
+    // Initialized methods
     private final static Logger LOGGER = Logger.getLogger(SettingsWindowController.class.getName());
+    private static Config config = new Config();
     private static FileHandler fh;
     
     // Constructor
@@ -176,10 +178,41 @@ public class SettingsWindowController extends BaseController implements Initiali
             
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+
+        config.loadXMLFromFile();
+        logMessage("Loaded config: " + config.toString(), Level.FINE);
+
+        logErrorBox.setSelected(config.getLogErrors());
+        startEnabledBox.setSelected(config.getStartEnabled());
+        minSysTrayBox.setSelected(config.getMinSystemTray());
+        startMiniBox.setSelected(config.getStartMini());
+
         logErrorBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Observable: " + observable);
-            System.out.println("oldValue: " + oldValue);
-            System.out.println("newValue: " + newValue);
+            config.setLogErrors(newValue);
+            logMessage("Set logMessage to: " + newValue, Level.FINE);
+            config.saveXMLToFile();
+            logMessage("Saved logMessage to: " + config.getPath(), Level.FINE);
+        });
+        
+        startEnabledBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            config.setStartEnabled(newValue);
+            logMessage("Set startEnabled to: " + newValue, Level.FINE);
+            config.saveXMLToFile();
+            logMessage("Saved startEnabled to: " + config.getPath(), Level.FINE);
+        });
+
+        minSysTrayBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            config.setMinSystemTray(newValue);
+            logMessage("Set setMinSystemTray to: " + newValue, Level.FINE);
+            config.saveXMLToFile();
+            logMessage("Saved setMinSystemTray to: " + config.getPath(), Level.FINE);
+        });
+
+        startMiniBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            config.setStartMini(newValue);
+            logMessage("Set setStartMini to: " + newValue, Level.FINE);
+            config.saveXMLToFile();
+            logMessage("Saved setStartMini to: " + config.getPath(), Level.FINE);
         });
     }
     

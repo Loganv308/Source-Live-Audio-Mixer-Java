@@ -5,8 +5,10 @@ module com.jslam {
     requires java.desktop;
     requires java.logging;
     requires java.xml.bind;
+    // requires jakarta.activation;
 
     opens com.jslam.controller;
+    opens com.jslam.controller.config;
     opens com.jslam.view;
     opens com.jslam.model;
     opens com.jslam to javafx.fxml;
