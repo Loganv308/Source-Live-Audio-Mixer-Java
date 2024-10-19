@@ -8,8 +8,6 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.swing.JFileChooser;
 
@@ -24,6 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class SettingsWindowController extends BaseController implements Initializable{
     
@@ -40,14 +39,15 @@ public class SettingsWindowController extends BaseController implements Initiali
             LOGGER.addHandler(fh);
             fh.setFormatter(new SimpleFormatter());
             LOGGER.setLevel(Level.ALL);
-            fh.setLevel(Level.ALL);
+            fh.setLevel(Level.ALL);  
+                      
         } catch(IOException e) {
             e.printStackTrace();
         }
     }
     
-    // Function to close the logger once done logging to file
-    public void closeLogger() {
+    // Function to close the FileHandler
+    public void closeHandler() {
         if (fh != null) {
             fh.close(); // Ensure you close the FileHandler
         }
@@ -178,7 +178,6 @@ public class SettingsWindowController extends BaseController implements Initiali
             
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
         config.loadXMLFromFile();
         logMessage("Loaded config: " + config.toString(), Level.FINE);
 
@@ -215,5 +214,4 @@ public class SettingsWindowController extends BaseController implements Initiali
             logMessage("Saved setStartMini to: " + config.getPath(), Level.FINE);
         });
     }
-    
 }
