@@ -28,29 +28,33 @@ public class ViewFactory {
         initializeStage(controller);
     }
 
-    private void initializeStage(BaseController baseController) {
+    private Stage initializeStage(BaseController baseController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(baseController.getFxmlName()));
         fxmlLoader.setController(baseController);
-        
         Parent parent;
 
         try {
             parent = fxmlLoader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.show();
+            activeStages.add(stage);
+
+            stage.setOnCloseRequest(event -> {
+                closeStage(stage);
+            });
+            
+            return stage;
         }
         catch(IOException e) {
             e.printStackTrace();
-            return;
-        }
-
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-
-        stage.setScene(scene);
-        stage.show();
-        activeStages.add(stage);
+            return null;
+        } 
     }
 
-    private void closeStage(Stage stageToClose) {
+    public void closeStage(Stage stageToClose) {
         stageToClose.close();
         activeStages.remove(stageToClose);
     }
@@ -60,6 +64,10 @@ public class ViewFactory {
 
         BaseController controller = new SettingsWindowController(this, "SettingsWindow.fxml");
 
-        initializeStage(controller);
+        Stage stage = initializeStage(controller);
+
+        stage.setOnCloseRequest(event -> {
+            ((SettingsWindowController)controller).closeHandler();
+        });
     }
 }
