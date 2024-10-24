@@ -16,16 +16,17 @@ public class Config {
     private Boolean startEnabled = false;
     private Boolean minSystemTray = false;
     private Boolean startMini = false;
+    private Boolean folderOverride = false;
+    private String steamFolderPath = ""; // TODO
+    private String userDateFolderPath = ""; // TODO
     private String path = "src\\main\\java\\com\\jslam\\controller\\config\\config.xml";
-    
-    
-    // public Config(){};
 
     // Default Constructor
     public Config() {
 
     }
 
+    // Getter - Setter for path variable 
     public String getPath(){
         return this.path;
     }
@@ -74,10 +75,19 @@ public class Config {
         this.startMini = startMini;
     }
 
+    @XmlElement
+    public Boolean getFolderOverride() {
+        return folderOverride;
+    }
+
+    public void setFolderOverride(Boolean folderOverride) {
+        this.folderOverride = folderOverride;
+    }
+
     // Used to print the info of this class
     @Override
     public String toString() {
-        return "Config [logErrors=" + logErrors + ", startEnabled=" + startEnabled + ", minSystemTray=" + minSystemTray + ", startMini=" + startMini + "]" ;
+        return "Config [logErrors=" + logErrors + ", startEnabled=" + startEnabled + ", minSystemTray=" + minSystemTray + ", startMini=" + startMini +  ", folderOverride=" + folderOverride + "]" ;
     }
 
     public void saveXMLToFile(){
@@ -115,5 +125,6 @@ public class Config {
         this.minSystemTray = config.minSystemTray;
         this.startEnabled = config.startEnabled;
         this.startMini = config.startMini;
+        this.folderOverride = config.folderOverride;
     }
 }

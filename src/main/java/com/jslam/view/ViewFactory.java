@@ -15,7 +15,8 @@ import javafx.stage.Stage;
 public class ViewFactory {
     
     private ArrayList<Stage> activeStages;
-    
+    private static SettingsWindowController settingsWindowController;
+
     public ViewFactory() {
         activeStages = new ArrayList<Stage>();
     }
@@ -25,49 +26,66 @@ public class ViewFactory {
 
         BaseController controller = new MainWindowController(this, "MainWindow.fxml");
 
-        initializeStage(controller);
+        try {
+            initializeStage(controller);
+        } catch(IOException | IllegalStateException e) {
+            ViewFactory.settingsWindowController = null;
+            System.out.println("CAUGHT: " + e);
+        } 
     }
 
-    private Stage initializeStage(BaseController baseController) {
+    private Stage initializeStage(BaseController baseController) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(baseController.getFxmlName()));
         fxmlLoader.setController(baseController);
         Parent parent;
 
-        try {
-            parent = fxmlLoader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
+        parent = fxmlLoader.load();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
 
-            stage.setScene(scene);
-            stage.show();
-            activeStages.add(stage);
+        stage.setScene(scene);
+        stage.show();
+        activeStages.add(stage);
 
-            stage.setOnCloseRequest(event -> {
-                closeStage(stage);
-            });
-            
-            return stage;
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-            return null;
-        } 
+        stage.setOnCloseRequest(event -> {
+            closeStage(stage);
+        });
+        
+        return stage;
     }
 
     public void closeStage(Stage stageToClose) {
-        stageToClose.close();
-        activeStages.remove(stageToClose);
+        if (stageToClose != null) {
+            stageToClose.close();
+            activeStages.remove(stageToClose);
+            System.out.println("Stage closed successfully");
+        }
+        
     }
 
-    public void showSettingsWindow() {
+    public void showSettingsWindow() throws IOException {
         System.out.println("Settings button triggered");
 
-        BaseController controller = new SettingsWindowController(this, "SettingsWindow.fxml");
-
-        Stage stage = initializeStage(controller);
-
-        stage.setOnCloseRequest(event -> {
-            ((SettingsWindowController)controller).closeHandler();
-        });
+        try {
+            if (ViewFactory.settingsWindowController == null) {
+                ViewFactory.settingsWindowController = new SettingsWindowController(this, "SettingsWindow.fxml");
+    
+                Stage stage = initializeStage(ViewFactory.settingsWindowController);
+    
+                stage.setOnCloseRequest(event -> {
+                    System.out.println("Closing settings window");
+                    (ViewFactory.settingsWindowController).closeHandler();
+                    ViewFactory.settingsWindowController = null;
+                    closeStage(stage);
+    
+                });
+        
+                stage.show();
+            } 
+        } catch (IOException | IllegalStateException e) {
+            ViewFactory.settingsWindowController = null;
+            System.out.println("CAUGHT: " + e);
+        }
+        System.out.println("Settings window shown");
     }
 }

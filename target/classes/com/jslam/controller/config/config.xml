@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <config>
+    <folderOverride>true</folderOverride>
     <logErrors>true</logErrors>
-    <minSystemTray>false</minSystemTray>
+    <minSystemTray>true</minSystemTray>
     <path>src\main\java\com\jslam\controller\config\config.xml</path>
     <startEnabled>false</startEnabled>
     <startMini>true</startMini>

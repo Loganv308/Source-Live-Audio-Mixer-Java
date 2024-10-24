@@ -22,7 +22,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class SettingsWindowController extends BaseController implements Initializable{
     
@@ -34,22 +33,28 @@ public class SettingsWindowController extends BaseController implements Initiali
     // Constructor
     public SettingsWindowController(ViewFactory viewFactory, String fxmlName) {
         super(viewFactory, fxmlName);
-        try {
-            fh = new FileHandler("src/main/java/com/jslam/logs/logs.log", true);
-            LOGGER.addHandler(fh);
-            fh.setFormatter(new SimpleFormatter());
-            LOGGER.setLevel(Level.ALL);
-            fh.setLevel(Level.ALL);  
-                      
-        } catch(IOException e) {
-            e.printStackTrace();
+        setupLogger();
+    }
+
+    private void setupLogger() {
+        if (fh == null) {  // Ensure the FileHandler is only created once
+            try {
+                fh = new FileHandler("src/main/java/com/jslam/logs/logs.log", true);
+                fh.setFormatter(new SimpleFormatter());
+                Logger logger = Logger.getLogger(SettingsWindowController.class.getName());
+                logger.addHandler(fh);
+                logger.setLevel(Level.ALL);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     
     // Function to close the FileHandler
     public void closeHandler() {
         if (fh != null) {
-            fh.close(); // Ensure you close the FileHandler
+            fh.close();  // Ensure the FileHandler is closed properly
+            System.out.println("FileHandler closed");
         }
     }
 
@@ -185,6 +190,7 @@ public class SettingsWindowController extends BaseController implements Initiali
         startEnabledBox.setSelected(config.getStartEnabled());
         minSysTrayBox.setSelected(config.getMinSystemTray());
         startMiniBox.setSelected(config.getStartMini());
+        folderDetectionBox.setSelected(config.getFolderOverride());
 
         logErrorBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
             config.setLogErrors(newValue);
@@ -212,6 +218,13 @@ public class SettingsWindowController extends BaseController implements Initiali
             logMessage("Set setStartMini to: " + newValue, Level.FINE);
             config.saveXMLToFile();
             logMessage("Saved setStartMini to: " + config.getPath(), Level.FINE);
+        });
+
+        folderDetectionBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            config.setFolderOverride(newValue);
+            logMessage("Set FolderOverride to: " + newValue, Level.FINE);
+            config.saveXMLToFile();
+            logMessage("Saved FolderOverride to: " + config.getPath(), Level.FINE);
         });
     }
 }

@@ -9,8 +9,6 @@ import com.jslam.view.ViewFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableView;
@@ -53,7 +51,12 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @FXML
     void settingsButtonAction(ActionEvent event) {
-        viewFactory.showSettingsWindow();
+        try {
+            viewFactory.showSettingsWindow();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
