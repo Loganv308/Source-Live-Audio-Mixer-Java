@@ -5,6 +5,7 @@ module com.jslam {
     requires java.desktop;
     requires java.logging;
     requires java.xml.bind;
+    requires jlayer;
     // requires jakarta.activation;
 
     opens com.jslam.controller;

@@ -66,7 +66,11 @@ public class MainWindowController extends BaseController implements Initializabl
 
     @FXML
     void ytLinkButtonAction(ActionEvent event) {
-
+        try {
+            viewFactory.showAudioWindow();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
