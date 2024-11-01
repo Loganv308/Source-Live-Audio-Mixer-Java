@@ -1,0 +1,16 @@
+com\jslam\controller\MainWindowController.class
+com\jslam\controller\BaseController.class
+com\jslam\Launcher.class
+com\jslam\model\AdvWaveViewer.class
+com\jslam\view\Status.class
+com\jslam\view\TrimAudioWindow.fxml
+com\jslam\controller\config\config.xml
+com\jslam\model\SourceGame$Track.class
+com\jslam\view\MainWindow.fxml
+com\jslam\controller\TrimAudioWindowController.class
+module-info.class
+com\jslam\controller\config\Config.class
+com\jslam\view\SettingsWindow.fxml
+com\jslam\model\AdvWaveViewer$1.class
+com\jslam\model\SourceGame.class
+com\jslam\controller\SettingsWindowController.class

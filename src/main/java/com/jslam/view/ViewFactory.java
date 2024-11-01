@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.jslam.controller.BaseController;
 import com.jslam.controller.MainWindowController;
 import com.jslam.controller.SettingsWindowController;
+import com.jslam.controller.TrimAudioWindowController;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ public class ViewFactory {
     
     private ArrayList<Stage> activeStages;
     private static SettingsWindowController settingsWindowController;
+    private static TrimAudioWindowController trimAudioWindowController;
 
     public ViewFactory() {
         activeStages = new ArrayList<Stage>();
@@ -87,5 +89,19 @@ public class ViewFactory {
             System.out.println("CAUGHT: " + e);
         }
         System.out.println("Settings window shown");
+    }
+
+    public void showAudioWindow() {
+        System.out.println("Audio window intiailized");
+
+        BaseController controller = new TrimAudioWindowController(this, "TrimAudioWindow.fxml");
+        
+
+        try {
+            initializeStage(controller);
+        } catch(IOException | IllegalStateException e) {
+            ViewFactory.trimAudioWindowController = null;
+            System.out.println("CAUGHT: " + e);
+        } 
     }
 }
